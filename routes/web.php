@@ -13,6 +13,16 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+Route::get('/', function () {
+    return view('welcome');
+});
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
+Route::resource('jabatan', 'JabatanController'); 
+Route::resource('file', 'FileController'); 
+
 Route::get('/admin', function () {
     return view('admin.index');
 });
@@ -49,11 +59,9 @@ Route::get('/user/profile', function () {
     return view('user.profile');
 });
 
-Route::get('/login', function () {
-    return view('login');
-});
-Route::get('/register', function () {
-    return view('register');
-});
-
-
+// Route::get('/login', function () {
+//     return view('login');
+// });
+// Route::get('/register', function () {
+//     return view('register');
+// });

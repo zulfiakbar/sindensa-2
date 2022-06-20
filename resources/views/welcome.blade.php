@@ -1,48 +1,100 @@
-<!doctype html>
-<html>
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link href="{{ asset('css/app.css') }}" rel="stylesheet">
-</head>
-<body>
-    <div>
-        <!-- Static sidebar for desktop -->
-        <!-- include('admin.sidebar') -->
-        <div class="md:pl-64 flex flex-col flex-1">
-            <main class="flex-1">
-                <div class="py-6">
-                    <div class="max-w-7xl mx-auto px-4 sm:px-6 md:px-8">
-                        <h1 class="text-2xl font-semibold text-gray-900">Dashboard</h1>
-                    </div>
-                    <div class="max-w-7xl mx-auto px-4 sm:px-6 md:px-8">
-                        <!-- Replace with your content -->
-                        <div class="py-4">
-                            <div class="grid grid-cols-4 gap-4">
-                                @for ($i = 0; $i < 4; $i++)  <!-- This example requires Tailwind CSS v2.0+ -->
-                                <div class="bg-white overflow-hidden shadow rounded-lg">
-                                    <div class="px-4 py-2">
-                                        <!-- Content goes here -->
-                                        <p>Jumlah Users</p>
-                                    </div>
-                                    <div class="px-4 py-7">
-                                        <!-- Content goes here -->
-                                        <p class="text-2xl">123 User</p>
-                                    </div>
-                                </div>
-                                @endfor
-                        </div>
-                        <!-- <div class="border-4 border-dashed border-gray-200 rounded-lg h-96"></div> -->
-                        <!-- include('admin.beach') -->
-                        <!-- include('admin.beach-add') -->
-                        <!-- include('admin.dashboard') -->
-                    </div>
-                    <!-- /End replace -->
+<!DOCTYPE html>
+<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <title>Laravel</title>
+
+        <!-- Fonts -->
+        <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@200;600&display=swap" rel="stylesheet">
+
+        <!-- Styles -->
+        <style>
+            html, body {
+                background-color: #fff;
+                color: #636b6f;
+                font-family: 'Nunito', sans-serif;
+                font-weight: 200;
+                height: 100vh;
+                margin: 0;
+            }
+
+            .full-height {
+                height: 100vh;
+            }
+
+            .flex-center {
+                align-items: center;
+                display: flex;
+                justify-content: center;
+            }
+
+            .position-ref {
+                position: relative;
+            }
+
+            .top-right {
+                position: absolute;
+                right: 10px;
+                top: 18px;
+            }
+
+            .content {
+                text-align: center;
+            }
+
+            .title {
+                font-size: 84px;
+            }
+
+            .links > a {
+                color: #636b6f;
+                padding: 0 25px;
+                font-size: 13px;
+                font-weight: 600;
+                letter-spacing: .1rem;
+                text-decoration: none;
+                text-transform: uppercase;
+            }
+
+            .m-b-md {
+                margin-bottom: 30px;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="flex-center position-ref full-height">
+            @if (Route::has('login'))
+                <div class="top-right links">
+                    @auth
+                        <a href="{{ url('/home') }}">Home</a>
+                    @else
+                        <a href="{{ route('login') }}">Login</a>
+
+                        @if (Route::has('register'))
+                            <a href="{{ route('register') }}">Register</a>
+                        @endif
+                    @endauth
                 </div>
+            @endif
+
+            <div class="content">
+                <div class="title m-b-md">
+                    Laravel
+                </div>
+
+                <div class="links">
+                    <a href="https://laravel.com/docs">Docs</a>
+                    <a href="https://laracasts.com">Laracasts</a>
+                    <a href="https://laravel-news.com">News</a>
+                    <a href="https://blog.laravel.com">Blog</a>
+                    <a href="https://nova.laravel.com">Nova</a>
+                    <a href="https://forge.laravel.com">Forge</a>
+                    <a href="https://vapor.laravel.com">Vapor</a>
+                    <a href="https://github.com/laravel/laravel">GitHub</a>
+                </div>
+            </div>
         </div>
-        </main>
-    </div>
-    </div>
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
-</body>
+    </body>
 </html>
