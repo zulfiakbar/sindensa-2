@@ -25,10 +25,14 @@
                         <div class="flex justify-end pt-4">
                             <div class="relative">
                                 <div class="flex justify-start content-center">
-                                    <input type="text" class="rounded border border-teal-600 bg-white w-34 px-3 py-3" placeholder="Search...">
+                                    <input type="text" class="rounded border border-teal-600 bg-white w-34 px-3 py-3"
+                                        placeholder="Search...">
                                     <button class="rounded text-white bg-teal-500 mx-3 px-3 py-3">
-                                        <svg class="h-6 w-auto text-white" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
-                                            <path fill-rule="evenodd" d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z" clip-rule="evenodd" />
+                                        <svg class="h-6 w-auto text-white" xmlns="http://www.w3.org/2000/svg"
+                                            viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                                            <path fill-rule="evenodd"
+                                                d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z"
+                                                clip-rule="evenodd" />
                                         </svg>
                                     </button>
                                 </div>
@@ -37,47 +41,62 @@
                         <!-- Replace with your content -->
                         <div class="py-5">
                             <!-- table -->
-                            <table id="table_id" class="divide-y divide-gray-200 w-full table-auto border-collapse border border-slate-500">
+                            <table id="table_id"
+                                class="divide-y divide-gray-200 w-full table-auto border-collapse border border-slate-500">
                                 <thead class="bg-gray-300">
                                     <tr>
-                                        <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-800 uppercase tracking-wider border border-slate-600">No Surat</th>
-                                        <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-800 uppercase tracking-wider border border-slate-600">Judul Surat</th>
-                                        <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-800 uppercase tracking-wider border border-slate-600">Status</th>
-                                        <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-800 uppercase tracking-wider border border-slate-600">Action</th>
+                                        <th scope="col"
+                                            class="px-6 py-3 text-left text-xs font-medium text-gray-800 uppercase tracking-wider border border-slate-600">
+                                            No Surat</th>
+                                        <th scope="col"
+                                            class="px-6 py-3 text-left text-xs font-medium text-gray-800 uppercase tracking-wider border border-slate-600">
+                                            Judul Surat</th>
+                                        <th scope="col"
+                                            class="px-6 py-3 text-left text-xs font-medium text-gray-800 uppercase tracking-wider border border-slate-600">
+                                            Status</th>
+                                        <th scope="col"
+                                            class="px-6 py-3 text-left text-xs font-medium text-gray-800 uppercase tracking-wider border border-slate-600">
+                                            Action</th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    @for ($i = 1; $i < 3; $i++) <tr class="bg-white border-collapse border border-slate-500">
-                                        <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900 border border-slate-600">{{ $i }}</td>
-                                        <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900 border border-slate-600">Surat {{ $i }}</td>
-                                        <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900 border border-slate-600">
+                                    @foreach ($files as $laporan)
+                                    <tr class="bg-white border-collapse border border-slate-500">
+                                        <td
+                                            class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900 border border-slate-600">
+                                            {{ $laporan->no_berkas }}</td>
+                                        <td
+                                            class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900 border border-slate-600">
+                                            {{ $laporan->nama_berkas }}</td>
+                                        <td
+                                            class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900 border border-slate-600">
                                             <div class="flex justify-center">
-                                                <span class="px-4 py-2 bg-green-500 rounded-md text-white">
-                                                    Diterima
+                                                @if($laporan->status_berkas == '4')
+                                                <span class="px-3 py-2 bg-green-500 rounded-md text-white">
+                                                    Selesai
                                                 </span>
+                                                @elseif($laporan->status_berkas == '1')
+                                                <span class="px-3 py-2 bg-gray-500 rounded-md text-white">
+                                                    Diajukan
+                                                </span>
+                                                @else
+                                                <span class="px-3 py-2 bg-yellow-500 rounded-md text-white">
+                                                    Menunggu
+                                                </span>
+                                                @endif
+
                                             </div>
                                         </td>
-                                        <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium space-x-3 w-10">
+                                        <td
+                                            class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium space-x-3 w-10">
+                                            @if($laporan->status_berkas == '1')
                                             <a href="" class="px-5 py-2 bg-blue-500 rounded-md text-white">Edit</a>
-                                            <button class="px-5 py-2 bg-red-500 rounded-md text-white" data-id="">Delete</button>
+                                            <button class="px-5 py-2 bg-red-500 rounded-md text-white"
+                                                data-id="">Delete</button>
+                                            @endif
                                         </td>
-                                        </tr>
-                                        <tr class="bg-white border-collapse border border-slate-500">
-                                            <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900 border border-slate-600">{{ $i }}</td>
-                                            <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900 border border-slate-600">Surat {{ $i }}</td>
-                                            <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900 border border-slate-600">
-                                                <div class="flex justify-center">
-                                                    <span class="px-3 py-2 bg-yellow-500 rounded-md text-white">
-                                                        Menunggu
-                                                    </span>
-                                                </div>
-                                            </td>
-                                            <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium space-x-3 w-10">
-                                                <a href="" class="px-5 py-2 bg-blue-500 rounded-md text-white">Edit</a>
-                                                <button class="px-5 py-2 bg-red-500 rounded-md text-white" data-id="">Delete</button>
-                                            </td>
-                                        </tr>
-                                        @endfor
+                                    </tr>
+                                    @endforeach
                                 </tbody>
                             </table>
                             <!-- end of table -->

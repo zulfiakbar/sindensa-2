@@ -20,7 +20,15 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
-Route::resource('file', 'FileController');
+
+
+Route::group(
+    ['prefix' => 'user', 'middleware' => 'auth'],
+    function () {
+        Route::get('/laporan', 'FileController@laporanUser');
+        Route::resource('file', 'FileController');
+    });
+
 
 Route::group(
     ['prefix' => 'admin'],
@@ -52,18 +60,18 @@ Route::get('/admin/profile', function () {
 });
 
 
-Route::get('/user', function () {
-    return view('user.index');
-});
-Route::get('/user/file', function () {
-    return view('user.file');
-});
-Route::get('/user/laporan', function () {
-    return view('user.laporan');
-});
-Route::get('/user/profile', function () {
-    return view('user.profile');
-});
+// Route::get('/user', function () {
+//     return view('user.index');
+// });
+// Route::get('/user/file', function () {
+//     return view('user.file');
+// });
+// Route::get('/user/laporan', function () {
+//     return view('user.laporan');
+// });
+// Route::get('/user/profile', function () {
+//     return view('user.profile');
+// });
 
 // Route::get('/login', function () {
 //     return view('login');

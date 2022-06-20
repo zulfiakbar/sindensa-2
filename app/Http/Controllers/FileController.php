@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\File;
 use Illuminate\Http\Request;
+use Auth;
 
 class FileController extends Controller
 {
@@ -14,7 +15,12 @@ class FileController extends Controller
      */
     public function index()
     {
-        return view('user.file');
+        return view('user.laporan');
+    }
+
+    public function laporanUser(){
+        $this->data['files'] = File::where('user_id', Auth::user()->id)->get();
+        return view('user.laporan',$this->data);
     }
 
     /**
@@ -24,7 +30,7 @@ class FileController extends Controller
      */
     public function create()
     {
-       //
+        return view('user.file');
     }
 
     /**
@@ -39,7 +45,7 @@ class FileController extends Controller
             $file = $request->file('file');
             $name = "_" . time();
             $fileName = $name . "." . $file->getClientOriginalExtension();
-            $folder = '/public/storage/uploads';
+            $folder = '/uploads';
             $filePath = $file->storeAs($folder, $fileName, 'public');
 
             $params = [
@@ -47,9 +53,11 @@ class FileController extends Controller
                 'no_berkas'=>$request->no_berkas,
                 'nama_berkas'=>$request->nama_berkas,
                 'status_berkas'=>1,
+                'user_id'=>Auth::user()->id,
             ];
             File::create($params);
         }
+        return redirect('/user/laporan');
     }
     
     
