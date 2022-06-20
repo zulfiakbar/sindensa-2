@@ -2,10 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use App\Bidang;
 use Illuminate\Http\Request;
 
-class BidangController extends Controller
+class userController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,8 +13,7 @@ class BidangController extends Controller
      */
     public function index()
     {
-        $this->data['bidangs'] =Bidang::orderBy('name','asc')->paginate(10);
-        return view('admin.bidang',$this->data);
+        return view('admin.user');
     }
 
     /**
@@ -25,7 +23,7 @@ class BidangController extends Controller
      */
     public function create()
     {
-        return view('admin.bidang-add');
+        //
     }
 
     /**
@@ -36,20 +34,16 @@ class BidangController extends Controller
      */
     public function store(Request $request)
     {
-        $bidang = Bidang::create([
-            'name'=>$request->name,
-        ]);
-        return redirect('/admin/bidang');
+        //
     }
-    
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Bidang  $bidang
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(Bidang $bidang)
+    public function show($id)
     {
         //
     }
@@ -57,10 +51,10 @@ class BidangController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Bidang  $bidang
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(Bidang $bidang)
+    public function edit($id)
     {
         //
     }
@@ -69,23 +63,21 @@ class BidangController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Bidang  $bidang
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Bidang $bidang)
+    public function update(Request $request, $id)
     {
-        $bidang->name = $request->name;
-        $bidang->save();
-        return $bidang;
+        //
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Bidang  $bidang
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Bidang $bidang)
+    public function destroy($id)
     {
         //
     }

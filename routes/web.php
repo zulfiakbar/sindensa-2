@@ -20,8 +20,14 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
-Route::resource('jabatan', 'JabatanController'); 
-Route::resource('file', 'FileController'); 
+Route::resource('file', 'FileController');
+
+Route::group(
+    ['prefix' => 'admin'],
+    function () {
+        Route::resource('jabatan', 'JabatanController'); 
+        Route::resource('bidang', 'BidangController'); 
+    });
 
 Route::get('/admin', function () {
     return view('admin.index');
@@ -29,18 +35,18 @@ Route::get('/admin', function () {
 Route::get('/admin/user', function () {
     return view('admin.user');
 });
-Route::get('/admin/jabatan', function () {
-    return view('admin.jabatan');
-});
-Route::get('/admin/jabatan/add', function () {
-    return view('admin.jabatan-add');
-});
-Route::get('/admin/bidang', function () {
-    return view('admin.bidang');
-});
-Route::get('/admin/bidang/add', function () {
-    return view('admin.bidang-add');
-});
+// Route::get('/admin/jabatan', function () {
+//     return view('admin.jabatan');
+// });
+// Route::get('/admin/jabatan/add', function () {
+//     return view('admin.jabatan-add');
+// });
+// Route::get('/admin/bidang', function () {
+//     return view('admin.bidang');
+// });
+// Route::get('/admin/bidang/add', function () {
+//     return view('admin.bidang-add');
+// });
 Route::get('/admin/profile', function () {
     return view('admin.profile');
 });
