@@ -27,14 +27,15 @@ Route::group(
     function () {
         Route::resource('jabatan', 'JabatanController'); 
         Route::resource('bidang', 'BidangController'); 
+        Route::resource('user','userController');
     });
 
 Route::get('/admin', function () {
     return view('admin.index');
 });
-Route::get('/admin/user', function () {
-    return view('admin.user');
-});
+// Route::get('/admin/user', function () {
+//     return view('admin.user');
+// });
 // Route::get('/admin/jabatan', function () {
 //     return view('admin.jabatan');
 // });

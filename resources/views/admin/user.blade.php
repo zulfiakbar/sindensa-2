@@ -40,10 +40,10 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    @for ($i = 0; $i < 4; $i++)
+                                    @foreach ($users as $user)
                                     <tr class="bg-white border-collapse border border-slate-500">                                        
-                                        <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">12345789</td>
-                                        <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">Name</td>
+                                        <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">{{ $user->nip     }}</td>
+                                        <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">{{ $user->name     }}</td>
                                         <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">
                                             <select class=" block w-full mt-1 rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50">
                                                 <option>Jabatan 1</option>
@@ -52,12 +52,12 @@
                                         </td>
                                         <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">
                                             <select class=" block w-full mt-1 rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50">
-                                                <option>Bidang 1</option>
-                                                <option>Bidang 2</option>
+                                                <option>bidang 1</option>
+                                                <option>bidang 2</option>
                                             </select>
                                         </td>
                                     </tr>
-                                    @endfor                                    
+                                    @endforeach                                
                                 </tbody>
                             </table>
                             <!-- end of table -->
