@@ -46,8 +46,11 @@
                                         <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">{{ $user->name     }}</td>
                                         <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">
                                             <select class=" block w-full mt-1 rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50">
-                                                <option>Jabatan 1</option>
-                                                <option>Jabatan 2</option>
+                                                @foreach ($jabatan as $name)
+                                                <option>{{ $name->name}}</option> 
+                                                @endforeach
+
+                                                
                                             </select>
                                         </td>
                                         <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">

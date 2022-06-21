@@ -16,6 +16,7 @@ class userController extends Controller
     {
         $this->data['users']=User::orderBy('name','asc')->paginate(10);
         return view('admin.user',$this->data);
+        
     }
 
     /**
