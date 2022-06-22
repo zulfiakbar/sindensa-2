@@ -14,8 +14,9 @@ class JabatanController extends Controller
      */
     public function index()
     {
-        $this->data['jabatans'] =Jabatan::orderBy('name','asc')->paginate(10);
-        return view('admin.jabatan',$this->data);
+        $jabatan = Jabatan::all();
+        return view('admin.jabatan', ['jabatan' => $jabatan]);
+        
     }
 
     /**
@@ -25,7 +26,7 @@ class JabatanController extends Controller
      */
     public function create()
     {
-        return view('admin.jabatan-add');
+        
     }
 
     /**
@@ -39,10 +40,10 @@ class JabatanController extends Controller
         // $params = $request->except('_token');
         
         // $jabatan = Jabatan::create($request);
-        $jabatan = Jabatan::create([
-            'name'=>$request->name,
-        ]);
-        return redirect('/admin/jabatan');
+        $jabatan = new Jabatan();
+        $jabatan ->name = $request->input("name");
+        $jabatan->save();
+        return redirect('admin/jabatan');
     }
 
     /**
@@ -62,9 +63,9 @@ class JabatanController extends Controller
      * @param  \App\Jabatan  $jabatan
      * @return \Illuminate\Http\Response
      */
-    public function edit(Jabatan $jabatan)
+    public function edit()
     {
-        //
+       
     }
 
     /**
