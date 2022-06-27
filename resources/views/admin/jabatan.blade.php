@@ -36,6 +36,8 @@
                                             No</th>
                                         <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-800 uppercase tracking-wider border border-slate-600">
                                             Nama Jabatan</th>
+                                            <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-800 uppercase tracking-wider border border-slate-600">
+                                                action</th>
 
                                     </tr>
                                 </thead>
@@ -44,9 +46,13 @@
                                     @foreach($jabatan as $jab) <tr class="bg-white border-collapse border border-slate-500">
                                         <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900 border border-slate-600">{{ $jab->id }}</td>
                                         <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900 border border-slate-600">{{ $jab->name }}</td>
+                                        <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium space-x-3 w-10">
+                                            <button class="px-5 py-2 bg-red-500 rounded-md text-white" data-id="">Delete</button>
+                                        </td>
                                         </tr>
                                         @endforeach
                                 </tbody>
+                                
                             </table>
                             <!-- end of table -->
                         </div>

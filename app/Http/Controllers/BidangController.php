@@ -89,6 +89,6 @@ class BidangController extends Controller
      */
     public function destroy(Bidang $bidang)
     {
-        //
+        $bidang->delete();
     }
 }
