@@ -36,7 +36,13 @@
                 <div class="flex items-center">
                     <div class="ml-3">
                         <p class="text-sm font-medium text-gray-700 group-hover:text-gray-900"></p>
-                        <a href="/logout" class="text-xs font-medium text-gray-500 group-hover:text-gray-700">Logout</a>
+                        <a class="text-xs font-medium text-gray-500 group-hover:text-gray-700" href="{{ route('logout') }}" onclick="event.preventDefault();
+                                                     document.getElementById('logout-form').submit();">
+                            Logout
+                        </a>
+                        <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                            @csrf
+                        </form>
                     </div>
                 </div>
             </div>
