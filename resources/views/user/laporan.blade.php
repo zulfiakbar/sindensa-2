@@ -47,37 +47,43 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    @for ($i = 1; $i < 3; $i++) <tr class="bg-white border-collapse border border-slate-500">
-                                        <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900 border border-slate-600">{{ $i }}</td>
-                                        <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900 border border-slate-600">Surat {{ $i }}</td>
-                                        <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900 border border-slate-600">
+                                    @foreach ($files as $laporan)
+                                    <tr class="bg-white border-collapse border border-slate-500">
+                                        <td
+                                            class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900 border border-slate-600">
+                                            {{ $laporan->no_berkas }}</td>
+                                        <td
+                                            class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900 border border-slate-600">
+                                            {{ $laporan->nama_berkas }}</td>
+                                        <td
+                                            class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900 border border-slate-600">
                                             <div class="flex justify-center">
-                                                <span class="px-4 py-2 bg-green-500 rounded-md text-white">
-                                                    Diterima
+                                                @if($laporan->status_berkas == '4')
+                                                <span class="px-3 py-2 bg-green-500 rounded-md text-white">
+                                                    Selesai
                                                 </span>
+                                                @elseif($laporan->status_berkas == '1')
+                                                <span class="px-3 py-2 bg-gray-500 rounded-md text-white">
+                                                    Diajukan
+                                                </span>
+                                                @else
+                                                <span class="px-3 py-2 bg-yellow-500 rounded-md text-white">
+                                                    Menunggu
+                                                </span>
+                                                @endif
+
                                             </div>
                                         </td>
-                                        <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium space-x-3 w-10">
+                                        <td
+                                            class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium space-x-3 w-10">
+                                            @if($laporan->status_berkas == '1')
                                             <a href="" class="px-5 py-2 bg-blue-500 rounded-md text-white">Edit</a>
-                                            <button class="px-5 py-2 bg-red-500 rounded-md text-white" data-id="">Delete</button>
+                                            <button class="px-5 py-2 bg-red-500 rounded-md text-white"
+                                                data-id="">Delete</button>
+                                            @endif
                                         </td>
-                                        </tr>
-                                        <tr class="bg-white border-collapse border border-slate-500">
-                                            <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900 border border-slate-600">{{ $i }}</td>
-                                            <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900 border border-slate-600">Surat {{ $i }}</td>
-                                            <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900 border border-slate-600">
-                                                <div class="flex justify-center">
-                                                    <span class="px-3 py-2 bg-yellow-500 rounded-md text-white">
-                                                        Menunggu
-                                                    </span>
-                                                </div>
-                                            </td>
-                                            <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium space-x-3 w-10">
-                                                <a href="" class="px-5 py-2 bg-blue-500 rounded-md text-white">Edit</a>
-                                                <button class="px-5 py-2 bg-red-500 rounded-md text-white" data-id="">Delete</button>
-                                            </td>
-                                        </tr>
-                                        @endfor
+                                    </tr>
+                                    @endforeach
                                 </tbody>
                             </table>
                             <!-- end of table -->

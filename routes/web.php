@@ -31,6 +31,8 @@ Route::post('/admin/bidang/store', 'BidangController@store');
 
 Route::get('/admin/jabatan', 'JabatanController@index');
 Route::post('/admin/jabatan/store', 'JabatanController@store');
+Route::get('/user/laporan', 'FileController@laporanUser');
+Route::post('/user/file', 'FileController@store');
 // Route::get('/admin/jabatan/edit/{id}', 'JabatanController@edit');
 
 Route::resource('jabatan', 'JabatanController   '); 
@@ -69,9 +71,9 @@ Route::get('/user', function () {
 Route::get('/user/file', function () {
     return view('user.file');
 });
-Route::get('/user/laporan', function () {
-    return view('user.laporan');
-});
+// Route::get('/user/laporan', function () {
+//     return view('user.laporan');
+// });
 Route::get('/user/acclaporan', function () {
     return view('user.acc-laporan');
 });
