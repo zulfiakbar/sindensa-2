@@ -23,6 +23,8 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/admin/user', 'UserController@index');
 Route::get('/admin/user/{id}/edit', 'UserController@edit');
 Route::post('/admin/user/{id}/update', 'UserController@update');
+Route::get('/admin/profile', 'UserController@editProfile');
+Route::post('/admin/profile', 'UserController@updateProfile');
 
 Route::get('/admin/bidang', 'BidangController@index');
 Route::post('/admin/bidang/store', 'BidangController@store');
@@ -56,9 +58,9 @@ Route::get('/admin/jabatan/add', function () {
 Route::get('/admin/bidang/add', function () {
     return view('admin.bidang-add');
 });
-Route::get('/admin/profile', function () {
-    return view('admin.profile');
-});
+// Route::get('/admin/profile', function () {
+//     return view('admin.profile');
+// });
 
 
 Route::get('/user', function () {

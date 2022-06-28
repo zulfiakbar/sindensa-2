@@ -7,6 +7,8 @@ use Illuminate\Http\Request;
 use App\User;
 use App\Jabatan;
 use App\Bidang;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 
 class userController extends Controller
 {
@@ -71,6 +73,16 @@ class userController extends Controller
        return view("admin.user-edit", ["user" => $user, 'jabatan' => $jabatan, 'bidang' => $bidang]);
     }
 
+    public function editProfile()
+    {
+       
+       $id = Auth::user()->id;
+       $user = User::find($id);  
+       return view("admin.profile", ["user" => $user]);
+    }
+
+   
+
     /**
      * Update the specified resource in storage.
      *
@@ -87,6 +99,19 @@ class userController extends Controller
         // $user ->update($request->all());
         $user->save();
         return redirect('admin/user');
+    }
+
+    public function updateProfile(Request $request)
+    {
+        $user = User::find($request->input("id"));
+        $user->nip = $request->input("nip");
+        $user->name = $request->input("name");
+        $user->email = $request->input("email");
+        $user->password = Hash::make($request['password']);
+        // password' => Hash::make($data['password']
+        // $user ->update($request->all());
+        $user->save();
+        return redirect('admin/profile');
     }
 
     /**
