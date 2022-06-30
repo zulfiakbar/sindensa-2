@@ -22,6 +22,7 @@ Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/admin/user', 'UserController@index');
 Route::get('/admin/user/{id}/edit', 'UserController@edit');
+Route::delete('/admin/user/{id}/delete', 'UserController@destroy');
 Route::post('/admin/user/{id}/update', 'UserController@update');
 Route::get('/admin/profile', 'UserController@editProfile');
 Route::post('/admin/profile', 'UserController@updateProfile');
@@ -33,6 +34,11 @@ Route::get('/admin/jabatan', 'JabatanController@index');
 Route::post('/admin/jabatan/store', 'JabatanController@store');
 Route::get('/user/laporan', 'FileController@laporanUser');
 Route::post('/user/file', 'FileController@store');
+Route::get('/user/acclaporan', 'FileController@index');
+Route::get('/user/acclaporan/acc/{id}', 'FileController@accLaporan');
+Route::get('/user/acclaporan/download/{path}', 'FileController@retrieveLaporan');
+Route::post('/user/accLaporan/validasi','FileController@validasiLaporan');
+
 // Route::get('/admin/jabatan/edit/{id}', 'JabatanController@edit');
 
 Route::resource('jabatan', 'JabatanController   '); 
@@ -74,12 +80,12 @@ Route::get('/user/file', function () {
 // Route::get('/user/laporan', function () {
 //     return view('user.laporan');
 // });
-Route::get('/user/acclaporan', function () {
-    return view('user.acc-laporan');
-});
-Route::get('/user/acclaporan/acc', function () {
-    return view('user.acc-laporan-edit');
-});
+// Route::get('/user/acclaporan', function () {
+//     return view('user.acc-laporan');
+// });
+// Route::get('/user/acclaporan/acc', function () {
+//     return view('user.acc-laporan-edit');
+// });
 Route::get('/user/profile', function () {
     return view('user.profile');
 });

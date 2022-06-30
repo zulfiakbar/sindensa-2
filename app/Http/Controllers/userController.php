@@ -20,7 +20,11 @@ class userController extends Controller
     public function index()
     {
         // $this->data['users']= User::orderBy('name','asc')->paginate(10);
-        $this->data['users']=User::join('jabatans', 'jabatans.id', '=', 'users.jabatan_id')->join('bidangs', 'bidangs.id', '=', 'users.bidang_id')->select('users.*', 'jabatans.name as jab', 'bidangs.name as bid')->orderBy('name','asc')->paginate(10);
+        $this->data['users']=User::leftJoin('jabatans', 'jabatans.id', '=', 'users.jabatan_id')
+                            ->leftJoin('bidangs', 'bidangs.id', '=', 'users.bidang_id')
+                            ->select('users.*', 'jabatans.name as jab', 'bidangs.name as bid')
+                            ->orderBy('name','asc')
+                            ->paginate(10);
         // $this->data['usersBid']=User::join('bidangs')->orderBy('name','asc')->paginate(10);
         // echo "<pre>{{$this->data['usersJab']}}</pre>";die;
         return view('admin.user',$this->data);  
@@ -122,6 +126,8 @@ class userController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $user=User::find($id);
+        $user->delete();
+        return redirect()->back();
     }
 }

@@ -24,28 +24,31 @@
                     <div class="max-w-7xl mx-auto px-4 sm:px-6 md:px-8">
                         <!-- Replace with your content -->
                         <div class="py-5">
-                            <form id="form-data" method="post" enctype="multipart/form-data">
+                            <form id="form-data" method="post" enctype="multipart/form-data" action="/user/accLaporan/validasi">
                                 <div class="mt-6 grid grid-cols-1 gap-y-6 gap-x-4 sm:grid-cols-6">
                                     @csrf
+                                    <input type="hidden" value="{{$file->id}}" name="file_id">
                                     <div class="sm:col-span-4">
                                         <label for="nama_surat" class="block text-sm font-medium text-gray-700"> Nama Surat
                                         </label>
                                         <div class="mt-1 flex rounded-md shadow-sm">                                            
-                                            <input type="text" readonly name="nama_surat" id="nama_surat" autocomplete="nama_surat" class="flex-1 focus:ring-blue-500 focus:border-blue-500 block w-full min-w-0 rounded sm:text-sm border-gray-300">
+                                            <input type="text" readonly name="nama_surat" value="{{$file->nama_berkas}}" id="nama_surat" autocomplete="nama_surat" class="flex-1 focus:ring-blue-500 focus:border-blue-500 block w-full min-w-0 rounded sm:text-sm border-gray-300">
                                         </div>
                                     </div>
                                     <div class="sm:col-span-4">
                                         <label for="no" class="block text-sm font-medium text-gray-700"> No Surat</label>
                                         <div class="mt-1 flex rounded-md shadow-sm">
-                                            <input type="text" readonly name="no" id="no" autocomplete="no" class="flex-1 focus:ring-blue-500 focus:border-blue-500 block w-full min-w-0 rounded sm:text-sm border-gray-300">
+                                            <input type="text" readonly name="no" id="no" value="{{$file->no_berkas}}" autocomplete="no" class="flex-1 focus:ring-blue-500 focus:border-blue-500 block w-full min-w-0 rounded sm:text-sm border-gray-300">
                                         </div>
                                     </div>
                                     <div class="sm:col-span-4">
                                         <label for="file" class="block text-sm font-medium text-gray-700"> File
                                         </label>
+                                        <a href="">
                                         <span class="px-4 py-2 bg-gray-700 rounded-md text-white">
-                                            file.docx
+                                        
                                         </span>
+                                        </a>
                                     </div>
                                     <div class="sm:col-span-4">
                                         <label for="file" class="block text-sm font-medium text-gray-700"> Pilih File</label>

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\File;
 use Illuminate\Http\Request;
 use Auth;
+use Illuminate\Support\Facades\Storage;
 
 class FileController extends Controller
 {
@@ -15,12 +16,28 @@ class FileController extends Controller
      */
     public function index()
     {
-        return view('user.laporan');
+        $this->data['filesUploaded'] = File::where('status_berkas','=',Auth::user()->jabatan_id-1);
+        if (Auth::user()->jabatan_id <= 2) {
+            $this->data['files'] = $this->data['filesUploaded']
+                                ->select('files.*')
+                                ->join('users','users.id','=','files.user_id')
+                                ->where('users.bidang_id','=',Auth::user()->bidang_id)
+                                ->paginate(10);
+        }else{
+            $this->data['files'] = $this->data['filesUploaded']->paginate(10);
+        }
+        // $this->data['user'] = Auth::user();
+        // return $this->data;
+                return view('user.acc-laporan',$this->data);
     }
 
     public function laporanUser(){
         $this->data['files'] = File::where('user_id', Auth::user()->id)->get();
         return view('user.laporan',$this->data);
+    }
+
+    public function retrieveLaporan(String $path){
+        return Storage::download($path);
     }
 
     /**
@@ -79,9 +96,17 @@ class FileController extends Controller
      * @param  \App\File  $file
      * @return \Illuminate\Http\Response
      */
+
+
     public function edit(File $file)
     {
         //
+    }
+
+    public function accLaporan($id)
+    {
+        $this->data['file'] = File::find($id); 
+        return view('user.acc-laporan-edit',$this->data);
     }
 
     /**
@@ -105,6 +130,25 @@ class FileController extends Controller
             ];
             $file->update($params);
         }
+    }
+
+    public function validasiLaporan(Request $request)
+    {
+        $this->data['laporan'] = File::find($request->file_id);
+        if ($request->has('file')) {
+            $file = $request->file('file');
+            $name = "_" . time();
+            $fileName = $name . "." . $file->getClientOriginalExtension();
+            $folder = '/uploads';
+            $filePath = $file->storeAs($folder, $fileName, 'public');
+
+            $params = [
+                'berkas' => $filePath,
+                'status_berkas'=> Auth::user()->jabatan_id,
+            ];
+            $this->data['laporan']->update($params);
+        }
+        return redirect('/user/acclaporan');
     }
 
     /**

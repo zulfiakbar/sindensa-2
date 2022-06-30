@@ -42,27 +42,20 @@
                                     <tr>
                                         <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-800 uppercase tracking-wider border border-slate-600">No Surat</th>
                                         <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-800 uppercase tracking-wider border border-slate-600">Judul Surat</th>
-                                        <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-800 uppercase tracking-wider border border-slate-600">File</th>
                                         <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-800 uppercase tracking-wider border border-slate-600">Action</th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    @for ($i = 1; $i < 3; $i++) <tr class="bg-white border-collapse border border-slate-500">
-                                        <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900 border border-slate-600">{{ $i }}</td>
-                                        <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900 border border-slate-600">Surat {{ $i }}</td>
-                                        <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900 border border-slate-600">
-                                            <div class="flex justify-center">
-                                                <span class="px-4 py-2 bg-gray-700 rounded-md text-white">
-                                                    file.docx
-                                                </span>
-                                            </div>
-                                        </td>
+                                    @foreach ($files as $laporan) <tr class="bg-white border-collapse border border-slate-500">
+                                        <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900 border border-slate-600">{{ $laporan->no_berkas }}</td>
+                                        <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900 border border-slate-600">{{ $laporan->nama_berkas }}</td>
+ 
                                         <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium space-x-3 w-10">
-                                            <a href="/user/acclaporan/acc" class="px-5 py-2 bg-blue-500 rounded-md text-white">Accept</a>
+                                            <a href="/user/acclaporan/acc/{{$laporan->id}}" class="px-5 py-2 bg-blue-500 rounded-md text-white">Accept</a>
                                             <button class="px-5 py-2 bg-red-500 rounded-md text-white" data-id="">Delete</button>
                                         </td>
                                         </tr>
-                                        @endfor
+                                        @endforeach
                                 </tbody>
                             </table>
                             <!-- end of table -->
