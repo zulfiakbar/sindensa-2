@@ -26,6 +26,8 @@ Route::delete('/admin/user/{id}/delete', 'UserController@destroy');
 Route::post('/admin/user/{id}/update', 'UserController@update');
 Route::get('/admin/profile', 'UserController@editProfile');
 Route::post('/admin/profile', 'UserController@updateProfile');
+Route::delete('/admin/jabatan/{id}/delete', 'JabatanController@destroy');
+Route::delete('/admin/bidang/{id}/delete', 'BidangController@destroy');
 
 Route::get('/admin/bidang', 'BidangController@index');
 Route::post('/admin/bidang/store', 'BidangController@store');

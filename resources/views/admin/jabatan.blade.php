@@ -47,7 +47,11 @@
                                         <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900 border border-slate-600">{{ $jab->id }}</td>
                                         <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900 border border-slate-600">{{ $jab->name }}</td>
                                         <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium space-x-3 w-10">
-                                            <button class="px-5 py-2 bg-red-500 rounded-md text-white" data-id="">Delete</button>
+                                            <form action="/admin/jabatan/{{$jab->id}}/delete" method="POST">
+                                                @csrf
+                                                @method('delete')
+                                            <button type="submit" class="px-5 py-2 bg-red-500 rounded-md text-white" data-id="">Hapus</button>
+                                            </form>
                                         </td>
                                         </tr>
                                         @endforeach

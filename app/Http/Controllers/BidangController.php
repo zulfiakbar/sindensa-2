@@ -87,8 +87,10 @@ class BidangController extends Controller
      * @param  \App\Bidang  $bidang
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Bidang $bidang)
+    public function destroy($id)
     {
+        $bidang=Bidang::find($id);
         $bidang->delete();
+        return redirect()->back();
     }
 }

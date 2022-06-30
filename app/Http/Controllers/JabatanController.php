@@ -94,8 +94,10 @@ class JabatanController extends Controller
      * @param  \App\Jabatan  $jabatan
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Jabatan $jabatan)
+    public function destroy($id)
     {
+        $jabatan=Jabatan::find($id);
         $jabatan->delete();
+        return redirect()->back();
     }
 }

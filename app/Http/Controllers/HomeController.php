@@ -23,11 +23,6 @@ class HomeController extends Controller
      */
     public function index()
     {
-        if(Auth::user()->jabatan_id){
-            if (jabatan_id=1){
-                return  view('admin.index');
-            }
-        }
         return view('home');
     }
 }
