@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use Auth;
 use Illuminate\Support\Facades\Storage;
 
+
 class FileController extends Controller
 {
     /**
@@ -135,13 +136,16 @@ class FileController extends Controller
     public function validasiLaporan(Request $request)
     {
         $this->data['laporan'] = File::find($request->file_id);
+        // $this->data['example'] = 'uploads/_'.substr($this->data['laporan']->berkas, 9);
+        // return $this->data;
         if ($request->has('file')) {
             $file = $request->file('file');
             $name = "_" . time();
             $fileName = $name . "." . $file->getClientOriginalExtension();
             $folder = '/uploads';
             $filePath = $file->storeAs($folder, $fileName, 'public');
-
+            unlink(public_path( 'storage\uploads\\'.substr($this->data['laporan']->berkas, 8) ));
+            // Storage::delete('uploads//'.substr($this->data['laporan']->berkas, 8));
             $params = [
                 'berkas' => $filePath,
                 'status_berkas'=> Auth::user()->jabatan_id,
@@ -157,8 +161,19 @@ class FileController extends Controller
      * @param  \App\File  $file
      * @return \Illuminate\Http\Response
      */
+
+    public function tolakLaporan(Request $request)
+    {
+        $laporan = File::find($request->file_id);
+        $laporan->status_berkas--;
+        $laporan->save();
+        return redirect()->back();
+    }
+
     public function destroy(File $file)
     {
-        //
+        $file=File::find($id);
+        $file->delete();
+        return redirect()->back();
     }
 }

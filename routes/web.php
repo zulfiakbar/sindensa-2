@@ -40,6 +40,8 @@ Route::get('/user/acclaporan', 'FileController@index');
 Route::get('/user/acclaporan/acc/{id}', 'FileController@accLaporan');
 Route::get('/user/acclaporan/download/{path}', 'FileController@retrieveLaporan');
 Route::post('/user/accLaporan/validasi','FileController@validasiLaporan');
+Route::post('/user/accLaporan/tolak','FileController@tolakLaporan');
+Route::delete('/user/laporan/{id}/delete', 'FileController@destroy');
 
 // Route::get('/admin/jabatan/edit/{id}', 'JabatanController@edit');
 
