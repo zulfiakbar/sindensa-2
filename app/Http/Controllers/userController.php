@@ -85,6 +85,14 @@ class userController extends Controller
        return view("admin.profile", ["user" => $user]);
     }
 
+    public function editProfileUser()
+    {
+       
+       $id = Auth::user()->id;
+       $user = User::find($id);  
+       return view("user.profile", ["user" => $user]);
+    }
+
    
 
     /**

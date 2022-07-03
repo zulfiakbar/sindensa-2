@@ -24,9 +24,9 @@
                     <div class="max-w-7xl mx-auto px-4 sm:px-6 md:px-8">
                         <div class="flex justify-end pt-4">
                             <div class="relative">
-                                <form action="/search">
+                                <form action="/user/file" method="GET">
                                 <div class="flex justify-start content-center">
-                                    <input type="text" class="rounded border border-teal-600 bg-white w-34 px-3 py-3"  name="name" placeholder="Search...">
+                                    <input type="text" class="rounded border border-teal-600 bg-white w-34 px-3 py-3"  name="nama_berkas"  placeholder="Search...">
                                     <button class="rounded text-white bg-teal-500 mx-3 px-3 py-3" type="submit">
                                         <svg class="h-6 w-auto text-white" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
                                             <path fill-rule="evenodd" d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z" clip-rule="evenodd" />

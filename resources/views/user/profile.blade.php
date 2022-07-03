@@ -25,25 +25,26 @@
                     <div class="max-w-7xl mx-auto px-4 sm:px-6 md:px-8">
                         <!-- Replace with your content -->
                         <div class="py-5">
-                            <form id="form-data" method="post" enctype="multipart/form-data">
+                            <form action="/user/profile" id="form-data" method="post" enctype="multipart/form-data">
                                 <div class="mt-6 grid grid-cols-1 gap-y-6 gap-x-4 sm:grid-cols-6">
                                     @csrf
+                                    <input id="hidden" name="id" type="hidden" value="{{$user->id}}">
                                     <div class="sm:col-span-4">
                                         <label for="NIP" class="block text-sm font-medium text-gray-700"> NIP </label>
                                         <div class="mt-1">
-                                            <input id="text" readonly name="NIP" type="NIP" autocomplete="NIP" required class="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm">
+                                            <input id="text" readonly name="nip" type="NIP" value="{{$user->nip}}" autocomplete="NIP" required class="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm">
                                         </div>
                                     </div>
                                     <div class="sm:col-span-4">
                                         <label for="nama" class="block text-sm font-medium text-gray-700"> Nama </label>
                                         <div class="mt-1">
-                                            <input id="text" name="nama" type="nama" autocomplete="nama" required class="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm">
+                                            <input id="text" name="name" type="nama" value="{{$user->name}} autocomplete="nama" required class="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm">
                                         </div>
                                     </div>
                                     <div class="sm:col-span-4">
                                         <label for="email" class="block text-sm font-medium text-gray-700"> Email </label>
                                         <div class="mt-1">
-                                            <input id="text" name="email" type="email" autocomplete="email" required class="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm">
+                                            <input id="text" name="email" type="email" value="{{$user->email}}" autocomplete="email" required class="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm">
                                         </div>
                                     </div>
                                     <div class="sm:col-span-4">

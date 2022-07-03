@@ -14,10 +14,13 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('home');
 });
 
+
 Auth::routes();
+
+
 
 Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/admin/user', 'UserController@index');
@@ -32,6 +35,8 @@ Route::delete('/admin/bidang/{id}/delete', 'BidangController@destroy');
 Route::get('/admin/bidang', 'BidangController@index');
 Route::post('/admin/bidang/store', 'BidangController@store');
 
+Route::get('/user/profile', 'UserController@editProfileUser');
+
 Route::get('/admin/jabatan', 'JabatanController@index');
 Route::post('/admin/jabatan/store', 'JabatanController@store');
 Route::get('/user/laporan', 'FileController@laporanUser');
@@ -42,6 +47,11 @@ Route::get('/user/acclaporan/download/{path}', 'FileController@retrieveLaporan')
 Route::post('/user/accLaporan/validasi','FileController@validasiLaporan');
 Route::post('/user/accLaporan/tolak','FileController@tolakLaporan');
 Route::delete('/user/laporan/{id}/delete', 'FileController@destroy');
+Route::post('/user/file', 'FileController@search');
+Route::get('download_public', 'FileController@download_public');
+
+
+
 
 // Route::get('/admin/jabatan/edit/{id}', 'JabatanController@edit');
 

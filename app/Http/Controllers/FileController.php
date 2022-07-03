@@ -176,4 +176,37 @@ class FileController extends Controller
         $file->delete();
         return redirect()->back();
     }
+
+    public function search(Request $request)
+	{
+		// menangkap data pencarian
+		$search = $request->search;
+ 
+    		// mengambil data dari table pegawai sesuai pencarian data
+            $this->data['files'] = $this->data['filesUploaded']->where('no_berkas','like',"%".$search."%")->paginate(10);
+		
+            return view('user.laporan',$this->data);
+ 
+	}
+
+    public function download_public(Request $request)
+    {
+        // if(Storage::disk('public')->exists("uploads/$request->file")){
+            // $path =Storage::disk('public')->path("uploads/$request->file");
+            // $path = ('storage\uploads\\'.$request->file);
+            Storage::disk('public')->download(storage_path('app\public\uploads\\'.$request->file));
+            // if(file_get_contents(public_path('uploads\\'.$request->file))){
+            //     return public_path('uploads\\'.$request->file);
+            // }
+            // return public_path('uploads\\'.$request->file);
+            // return $path;
+            // return public_path( 'storage\uploads\\'.$request->file);
+            // return $request;
+            // $content = file_get_content($path);
+            // return response($content)->withHeaders([
+            //     'Conten-Type'=> mime_content_type($path)
+            // ]);
+        // }
+        // return redirect('/404');
+    }
 }
