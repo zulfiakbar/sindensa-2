@@ -47,7 +47,7 @@ Route::get('/user/acclaporan/download/{path}', 'FileController@retrieveLaporan')
 Route::post('/user/accLaporan/validasi','FileController@validasiLaporan');
 Route::post('/user/accLaporan/tolak','FileController@tolakLaporan');
 Route::delete('/user/laporan/{id}/delete', 'FileController@destroy');
-Route::post('/user/file', 'FileController@search');
+
 Route::get('download_public', 'FileController@download_public');
 
 
