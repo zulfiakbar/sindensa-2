@@ -10,7 +10,7 @@
 <body>
     <div>
         <!-- Static sidebar for desktop -->
-        @include('admin.sidebar')
+        @include('user.sidebar')
         <div class="md:pl-64 flex flex-col flex-1">
             <main class="flex-1">
                 <div class="py-6">
@@ -18,7 +18,7 @@
                         <div class="flex justify-between items-end">
                             <h1 class="text-2xl font-semibold text-gray-900">Acc Laporan</h1>
                             <!-- User info  -->
-                            @include('admin.header')
+                            @include('user.header')
                         </div>
                     </div>
                     <div class="max-w-7xl mx-auto px-4 sm:px-6 md:px-8">
@@ -32,21 +32,22 @@
                                         <label for="nama_surat" class="block text-sm font-medium text-gray-700"> Nama Surat
                                         </label>
                                         <div class="mt-1 flex rounded-md shadow-sm">                                            
-                                            <input type="text" readonly name="nama_surat" value="{{$file->nama_berkas}}" id="nama_surat" autocomplete="nama_surat" class="flex-1 focus:ring-blue-500 focus:border-blue-500 block w-full min-w-0 rounded sm:text-sm border-gray-300">
+                                            <input type="text" readonly name="nama_berkas" value="{{$file->nama_berkas}}" id="nama_surat" autocomplete="nama_surat" class="flex-1 focus:ring-blue-500 focus:border-blue-500 block w-full min-w-0 rounded sm:text-sm border-gray-300">
                                         </div>
                                     </div>
                                     <div class="sm:col-span-4">
                                         <label for="no" class="block text-sm font-medium text-gray-700"> No Surat</label>
                                         <div class="mt-1 flex rounded-md shadow-sm">
-                                            <input type="text" readonly name="no" id="no" value="{{$file->no_berkas}}" autocomplete="no" class="flex-1 focus:ring-blue-500 focus:border-blue-500 block w-full min-w-0 rounded sm:text-sm border-gray-300">
+                                            <input type="text" readonly name="no_surat" id="no" value="{{$file->no_berkas}}" autocomplete="no" class="flex-1 focus:ring-blue-500 focus:border-blue-500 block w-full min-w-0 rounded sm:text-sm border-gray-300">
                                         </div>
                                     </div>
                                     <div class="sm:col-span-4">
-                                        <label for="file" class="block text-sm font-medium text-gray-700"> File
-                                        </label>
-                                        <a href="">
-                                        <span class="px-4 py-2 bg-gray-700 rounded-md text-white">
                                         
+                                        <a href="{{asset('storage/'.$file->berkas) }}" value="{{$file->berkas}}">
+                                            <label for="file"  class="block text-sm font-medium text-gray-700"> File
+                                            </label>
+                                        <span class="px-4 py-2 bg-gray-700 rounded-md text-white">
+                                            Download
                                         </span>
                                         </a>
                                     </div>

@@ -26,6 +26,10 @@ class LoginController extends Controller
      *
      * @var string
      */
+    // if (auth()->user()->$jabatan == '0') {
+    //     return redirect('/admin/index');
+    // }
+    // return redirect
     protected $redirectTo = RouteServiceProvider::HOME;
 
     /**

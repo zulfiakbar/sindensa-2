@@ -45,6 +45,7 @@
                                         <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-800 uppercase tracking-wider border border-slate-600">No Surat</th>
                                         <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-800 uppercase tracking-wider border border-slate-600">Judul Surat</th>
                                         <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-800 uppercase tracking-wider border border-slate-600">File</th>
+                                        <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-800 uppercase tracking-wider border border-slate-600">Status File</th>
                                         <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-800 uppercase tracking-wider border border-slate-600">Action</th>
                                     </tr>
                                 </thead>
@@ -57,6 +58,16 @@
                                         <td
                                             class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900 border border-slate-600">
                                             {{ $laporan->nama_berkas }}</td>
+                                        <td>
+                                            <div class="flex justify-center">
+                                                <a href="{{asset('storage/'.$laporan->berkas) }}">
+                                                <span class="px-3 py-2  bg-green-500 rounded-md text-white">
+                                                 Download
+                                                </span>
+                                                </a>
+                                             </div>
+                                        </td>
+                                        
                                         <td
                                             class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900 border border-slate-600">
                                             <div class="flex justify-center">

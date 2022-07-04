@@ -48,7 +48,7 @@ Route::post('/user/accLaporan/validasi','FileController@validasiLaporan');
 Route::post('/user/accLaporan/tolak','FileController@tolakLaporan');
 Route::delete('/user/laporan/{id}/delete', 'FileController@destroy');
 
-Route::get('download_public', 'FileController@download_public');
+Route::get('/user/acc-laporan-edit/uploads', 'FileController@download_public');
 
 
 
