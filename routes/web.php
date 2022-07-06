@@ -36,6 +36,7 @@ Route::get('/admin/bidang', 'BidangController@index');
 Route::post('/admin/bidang/store', 'BidangController@store');
 
 Route::get('/user/profile', 'UserController@editProfileUser');
+Route::post('/user/profile', 'UserController@updateProfileUser');
 
 Route::get('/admin/jabatan', 'JabatanController@index');
 Route::post('/admin/jabatan/store', 'JabatanController@store');
@@ -47,6 +48,8 @@ Route::get('/user/acclaporan/download/{path}', 'FileController@retrieveLaporan')
 Route::post('/user/accLaporan/validasi','FileController@validasiLaporan');
 Route::post('/user/accLaporan/tolak','FileController@tolakLaporan');
 Route::delete('/user/laporan/{id}/delete', 'FileController@destroy');
+
+
 
 Route::get('/user/acc-laporan-edit/uploads', 'FileController@download_public');
 
