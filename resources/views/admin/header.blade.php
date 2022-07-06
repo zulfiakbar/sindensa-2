@@ -6,7 +6,7 @@
             </a>
         </div>
         <div class="ml-3">
-            <p class="text-sm font-medium text-gray-700 group-hover:text-gray-900">Steven Grant</p>
+            <p class="text-sm font-medium text-gray-700 group-hover:text-gray-900">{{Auth::user()->name}}</p>
         </div>
     </div>
 </div>

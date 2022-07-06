@@ -33,8 +33,17 @@ class FileController extends Controller
     }
 
     public function laporanUser(){
-        $this->data['files'] = File::where('user_id', Auth::user()->id)->get();
-        return view('user.laporan',$this->data);
+        $searchParam = request("search");
+
+        $files = File::where([
+            ["user_id", "=", Auth::user()->id],
+            ["nama_berkas", "LIKE", "%" . $searchParam . "%"],
+        ])->get();
+
+        return view('user.laporan', [
+            "files" => $files,
+            "search" => $searchParam, 
+        ]);
     }
 
     // public function retrieveLaporan(String $path){

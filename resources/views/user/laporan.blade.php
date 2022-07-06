@@ -10,7 +10,7 @@
 <body>
     <div>
         <!-- Static sidebar for desktop -->
-        @include('user.sidebar')
+        @include('admin.sidebar')
         <div class="md:pl-64 flex flex-col flex-1">
             <main class="flex-1">
                 <div class="py-6">
@@ -18,15 +18,15 @@
                         <div class="flex justify-between items-end">
                             <h1 class="text-2xl font-semibold text-gray-900">Laporan</h1>
                             <!-- User info  -->
-                            @include('user.header')
+                            @include('admin.header')
                         </div>
                     </div>
                     <div class="max-w-7xl mx-auto px-4 sm:px-6 md:px-8">
                         <div class="flex justify-end pt-4">
                             <div class="relative">
-                                <form action="/user/file" method="GET">
+                                <form action="/user/laporan" method="GET">
                                 <div class="flex justify-start content-center">
-                                    <input type="text" class="rounded border border-teal-600 bg-white w-34 px-3 py-3"  name="nama_berkas"  placeholder="Search...">
+                                    <input type="text" class="rounded border border-teal-600 bg-white w-34 px-3 py-3"  name="search"  placeholder="Search..." value="{{ $search }}">
                                     <button class="rounded text-white bg-teal-500 mx-3 px-3 py-3" type="submit">
                                         <svg class="h-6 w-auto text-white" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
                                             <path fill-rule="evenodd" d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z" clip-rule="evenodd" />

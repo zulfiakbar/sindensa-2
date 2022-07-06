@@ -125,6 +125,18 @@ class userController extends Controller
         $user->save();
         return redirect('admin/profile');
     }
+    public function updateProfileUser(Request $request)
+    {
+        $user = User::find($request->input("id"));
+        $user->nip = $request->input("nip");
+        $user->name = $request->input("name");
+        $user->email = $request->input("email");
+        $user->password = Hash::make($request['password']);
+        // password' => Hash::make($data['password']
+        // $user ->update($request->all());
+        $user->save();
+        return redirect('user/profile');
+    }
 
     /**
      * Remove the specified resource from storage.
