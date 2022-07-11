@@ -12,6 +12,7 @@
         <!-- Static sidebar for desktop -->
         @include('admin.sidebar')
         <div class="md:pl-64 flex flex-col flex-1">
+
             <main class="flex-1">
                 <div class="py-6">
                     <div class="max-w-7xl mx-auto px-4 sm:px-6 md:px-8">
@@ -21,19 +22,11 @@
                             @include('admin.header')
                         </div>
                     </div>
-                    <div class="max-w-7xl mx-auto px-4 sm:px-6 md:px-8">
-                        <!-- Replace with your content -->
-                        <div class="py-4">
-                            <div class="grid grid-cols-4 gap-4">
-
-                            </div>
-                        </div>
-                        <!-- /End replace -->
-                    </div>
                 </div>
-            </main>
-        </div>
+            </div>
+        </main>
     </div>
+
 </body>
 
 </html>

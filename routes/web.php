@@ -13,53 +13,62 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('home');
-});
+
 
 
 Auth::routes();
 
+Route::group(
+    [ 'middleware' => ['auth']],
+    function () {
+        Route::get('/home', 'HomeController@index')->name('home');
+        Route::get('/admin/user', 'UserController@index');
+        Route::get('/admin/user/{id}/edit', 'UserController@edit');
+        Route::delete('/admin/user/{id}/delete', 'UserController@destroy');
+        Route::post('/admin/user/{id}/update', 'UserController@update');
+        Route::get('/admin/profile', 'UserController@editProfile');
+        Route::post('/admin/profile', 'UserController@updateProfile');
+        Route::delete('/admin/jabatan/{id}/delete', 'JabatanController@destroy');
+        Route::delete('/admin/bidang/{id}/delete', 'BidangController@destroy');
+        
+        Route::get('/admin/bidang', 'BidangController@index');
+        Route::post('/admin/bidang/store', 'BidangController@store');
+        
+        Route::get('/user/profile', 'UserController@editProfileUser');
+        Route::post('/user/profile', 'UserController@updateProfileUser');
+        
+        Route::get('/admin/jabatan', 'JabatanController@index');
+        Route::post('/admin/jabatan/store', 'JabatanController@store');
+        Route::get('/user/laporan', 'FileController@laporanUser');
+        Route::post('/user/file', 'FileController@store');
+        Route::get('/user/acclaporan', 'FileController@index');
+        Route::get('/user/acclaporan/acc/{id}', 'FileController@accLaporan');
+        Route::get('/user/acclaporan/download/{path}', 'FileController@retrieveLaporan');
+        Route::post('/user/accLaporan/validasi','FileController@validasiLaporan');
+        Route::post('/user/accLaporan/tolak','FileController@tolakLaporan');
+        Route::delete('/user/laporan/{id}/delete', 'FileController@destroy');
+        
+        
+        
+        Route::get('/user/acc-laporan-edit/uploads', 'FileController@download_public');
+        
+        
+        Route::post('/logout', 'Auth\LoginController@logout')->name('logout');
+        
+        
+        
+        // Route::get('/admin/jabatan/edit/{id}', 'JabatanController@edit');
+        
+        Route::resource('jabatan', 'JabatanController   '); 
+        Route::resource('file', 'FileController'); 
+        Route::get('/', function () {
+            return view('dashboard');
+        });
+    });
 
 
-Route::get('/home', 'HomeController@index')->name('home');
-Route::get('/admin/user', 'UserController@index');
-Route::get('/admin/user/{id}/edit', 'UserController@edit');
-Route::delete('/admin/user/{id}/delete', 'UserController@destroy');
-Route::post('/admin/user/{id}/update', 'UserController@update');
-Route::get('/admin/profile', 'UserController@editProfile');
-Route::post('/admin/profile', 'UserController@updateProfile');
-Route::delete('/admin/jabatan/{id}/delete', 'JabatanController@destroy');
-Route::delete('/admin/bidang/{id}/delete', 'BidangController@destroy');
-
-Route::get('/admin/bidang', 'BidangController@index');
-Route::post('/admin/bidang/store', 'BidangController@store');
-
-Route::get('/user/profile', 'UserController@editProfileUser');
-Route::post('/user/profile', 'UserController@updateProfileUser');
-
-Route::get('/admin/jabatan', 'JabatanController@index');
-Route::post('/admin/jabatan/store', 'JabatanController@store');
-Route::get('/user/laporan', 'FileController@laporanUser');
-Route::post('/user/file', 'FileController@store');
-Route::get('/user/acclaporan', 'FileController@index');
-Route::get('/user/acclaporan/acc/{id}', 'FileController@accLaporan');
-Route::get('/user/acclaporan/download/{path}', 'FileController@retrieveLaporan');
-Route::post('/user/accLaporan/validasi','FileController@validasiLaporan');
-Route::post('/user/accLaporan/tolak','FileController@tolakLaporan');
-Route::delete('/user/laporan/{id}/delete', 'FileController@destroy');
 
 
-
-Route::get('/user/acc-laporan-edit/uploads', 'FileController@download_public');
-
-
-
-
-// Route::get('/admin/jabatan/edit/{id}', 'JabatanController@edit');
-
-Route::resource('jabatan', 'JabatanController   '); 
-Route::resource('file', 'FileController'); 
 
 
 Route::get('/admin', function () {
