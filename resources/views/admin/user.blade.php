@@ -48,11 +48,11 @@
                                         <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">{{$user->jab}}</td>
                                         <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">{{$user->bid}}</td>
                                         <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium space-x-3 w-10">
-                                            <a href="/admin/user/{{$user->id}}/edit" class="px-5 py-2 bg-blue-500 rounded-md text-white">Edit</a>
-                                            <form action="/admin/user/{{$user->id}}/delete" method="POST" >
+                                            <a href="/admin/user/{{$user->id}}/edit" class="px-14 py-2 bg-blue-500 rounded-md text-white">Edit</a>
+                                            <form action="/admin/user/{{$user->id}}/delete" method="POST" class="pt-3 flex">
                                                 @csrf
                                                 @method('delete')
-                                            <button type="submit" class="px-5 py-2 bg-red-500 rounded-md text-white" data-id="">Hapus</button>
+                                            <button type="submit" class="px-5 py-2 bg-red-500 rounded-md text-white flex-auto" data-id="">Hapus</button>
                                             </form>
                                         </td>
                                     </tr>
