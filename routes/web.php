@@ -47,6 +47,7 @@ Route::group(
         Route::post('/user/accLaporan/validasi','FileController@validasiLaporan');
         Route::post('/user/accLaporan/tolak','FileController@tolakLaporan');
         Route::delete('/user/laporan/{id}/delete', 'FileController@destroy');
+        Route::get('/admin/adminlaporan', 'FileController@laporanAdmin');
         
         
         

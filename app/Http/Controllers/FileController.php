@@ -179,7 +179,7 @@ class FileController extends Controller
         return redirect()->back();
     }
 
-    public function destroy(File $file)
+    public function destroy($id)
     {
         $file=File::find($id);
         $file->delete();
@@ -218,4 +218,15 @@ class FileController extends Controller
         // }
         // return redirect('/404');
     }
+
+    public function laporanAdmin()
+    {
+        $this->data['search']= request("search");
+        $this->data['files'] = File::where('status_berkas','=',4)->paginate(10);
+        // $this->data['user'] = Auth::user();
+        // return $this->data;
+                return view('admin.adminlaporan',$this->data);
+    }
+
+
     }
