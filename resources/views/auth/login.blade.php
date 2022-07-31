@@ -7,13 +7,20 @@
     @include('head')
 </head>
 
-<body>
+<body style="background-image: url({{ asset('storage/asset/logo.png') }})" class="bg-no-repeat bg-center bg-[length:600px_600px] h-screen backdrop-blur-sm">
     <div class="min-h-full flex flex-col justify-center py-12 sm:px-6 lg:px-8">
         <div class="mt-8 sm:mx-auto sm:w-full sm:max-w-md">
             <div class="bg-white py-8 px-4 border-2 sm:rounded-lg sm:px-10">
                 <form class="space-y-6" action="{{ route('login') }}" method="POST">
                     <div class="sm:mx-auto sm:w-full sm:max-w-md">
-                        <h2 class="mt-6 text-center text-3xl font-bold text-gray-900">Login</h2>
+                        <div class="grid grid-cols-2 gap-4">
+                            <div>
+                                <h2 class="content-start mt-6 text-3xl font-bold text-gray-900">Login</h2>
+                            </div>
+                            <div class="grid justify-items-end">
+                                <img src="{{ asset('storage/asset/logo.png') }}" alt="" width="" class="bg-auto w-16 referrerpolicy=" no-referrer">
+                            </div>
+                        </div>
                     </div>
                     @csrf
                     <div>

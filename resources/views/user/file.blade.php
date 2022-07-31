@@ -7,7 +7,7 @@
     @include('head')
 </head>
 
-<body>
+<body style="background-image: url({{ asset('storage/asset/logo.png') }})" class="bg-no-repeat bg-center bg-[length:600px_600px] h-screen backdrop-blur-sm">
     <div>
         <!-- Static sidebar for desktop -->
         @include('admin.sidebar')
